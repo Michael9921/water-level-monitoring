@@ -35,11 +35,7 @@ exports.signin = (req, res) => {
 
         res.status(200).send({
             id: user._id,
-            name: user.name,
-            role: user.role,
-            email: user.email,
             accessToken: token,
-            isVerified: user.isVerified
         });
     })
 };

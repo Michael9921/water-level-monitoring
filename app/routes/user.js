@@ -3,6 +3,7 @@ const auth = require('../controller/auth.controller')
 const user = require('../controller/user.controller');
 const users = require("../model/user.model");
 
+
 module.exports = (app) => {
     app.use((req, res, next) => {
         res.header(

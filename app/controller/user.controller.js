@@ -12,13 +12,10 @@ exports.getAllUser = async (req, res) => {
 
 exports.postNewUser = async (req, res) => {
     const data = new User({
-        name: req.body.name,
-        email: req.body.email,
+        fullName: req.body.fullName,
+        phone:  req.body.phone,
         password: await bcrypt.hash(req.body.password, 12),
-        isVerified: false,
-        createdAt: new Date().toISOString(),
-        role: "user",
-        gateways: []
+        email: req.body.email,
     })
     const checkUser = await User.find(
         { email: req.body.email }, { _id: 1 }

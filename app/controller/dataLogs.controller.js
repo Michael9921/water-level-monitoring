@@ -37,20 +37,16 @@ exports.insertSingleData = async (req, res, next) => {
     const gateway = await db.gateways.findOne({
         token: req.headers['x-access-token']
     })
-
     if (!gateway) {
         return res.status(401).send({
             message: "Error",
             errors: "Invalid credentials"
-        })
+        });
     }
     var data = new db.dataLogs({
         idNode: req.body.idNode,
-        timestamp: req.body.timestamp,
-        airTemp: req.body.airTemp,
-        airHum: req.body.airHum,
-        soilHum: req.body.soilHum,
-        gps: req.body.gps
+        waterLevel: req.body.waterLevel,
+        timestamp: req.body.timestamp
     })
     data.save((err, doc) => {
         !err ? res.status(200).send({
